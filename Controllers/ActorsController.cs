@@ -30,11 +30,13 @@ namespace MvcMovie.Controllers
             {
                 actors = actors.Where(s => s.Name!.Contains(searchString));
             }
-            if(!string.IsNullOrEmpty(actorGenre)){
+            if (!string.IsNullOrEmpty(actorGenre))
+            {
                 actors = actors.Where(x => x.Genre == actorGenre);
             }
 
-            var actorGenreVM = new ActorGenreViewModel{
+            var actorGenreVM = new ActorGenreViewModel
+            {
                 Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
                 Actors = await actors.ToListAsync()
 
